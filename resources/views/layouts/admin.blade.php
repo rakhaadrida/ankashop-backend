@@ -27,8 +27,10 @@
         <!-- Header-->
         @include('includes.navbar')
 
-        <!-- Content -->
-        @yield('content')
+        <div class="content">
+            <!-- Content -->
+            @yield('content')
+        </div>
 
         <div class="clearfix"></div>
     </div>
