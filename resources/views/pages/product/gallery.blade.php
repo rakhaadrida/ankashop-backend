@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card p-3">
           <div class="card-body">
-            <h4 class="box-title">Daftar Barang</h4>
+            <h4 class="box-title">Daftar Foto Barang {{ $product->name }}</h4>
           </div>
           <div class="card-body--">
             <div class="table-stats order-table ov-h">
@@ -15,9 +15,8 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Photo</th>
+                    <th>Is Default</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -25,19 +24,13 @@
                   @forelse ($items as $item)
                     <tr>
                       <td>{{ $item->id }}</td>
-                      <td>{{ $item->name }}</td>
-                      <td>{{ $item->type }}</td>
-                      <td>{{ $item->price }}</td>
-                      <td>{{ $item->quantity }}</td>
+                      <td>{{ $item->product->name }}</td>
                       <td>
-                        <a href="{{ route('productGallery', $item->id) }}" class="btn btn-primary btn-sm">
-                        {{-- <a href="#" class="btn btn-info btn-sm"> --}}
-                          <i class="fa fa-picture-o"></i>
-                        </a>
-                        <a href="{{ route('product.edit', $item->id) }}" class="btn btn-primary btn-sm">
-                          <i class="fa fa-pencil"></i>
-                        </a>
-                        <form action="{{ route('product.destroy', $item->id) }}" method="post" class="d-inline">
+                        <img src="{{ url($item->photo) }}" alt="">
+                      </td>
+                      <td>{{ $item->is_default ? 'Ya' : 'Tidak' }}</td>
+                      <td>
+                        <form action="{{ route('product-gallery.destroy', $item->id) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-sm">
@@ -48,7 +41,7 @@
                     </tr>
                   @empty
                     <tr>
-                      <td colspan="6">Belum Ada Data Produk</td>
+                      <td colspan="6" class="text-center">Belum Ada Data Produk</td>
                     </tr>
                   @endforelse
                 </tbody>
