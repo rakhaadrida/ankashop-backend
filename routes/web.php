@@ -18,3 +18,6 @@ Auth::routes(['register' => false]);
 Route::get('product/{id}/gallery', 'ProductController@gallery')->name('productGallery');
 Route::resource('product', 'ProductController');
 Route::resource('product-gallery', 'ProductGalleryController');
+Route::resource('transaction', 'TransactionController');
+Route::get('transaction/{id}/status', 'TransactionController@status')
+      ->name('transaction-status');
