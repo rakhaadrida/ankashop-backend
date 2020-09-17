@@ -13,6 +13,6 @@ class Product extends Model
     protected $fillable = ['id', 'name', 'slug', 'type', 'description', 'price', 'quantity'];
 
     public function gallery() {
-        return $this->hasMany('App\Models\Gallery', 'product_id', 'id');
+        return $this->hasMany('App\Models\ProductGallery', 'product_id', 'id');
     }
 }
