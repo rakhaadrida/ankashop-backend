@@ -23,7 +23,7 @@ class CheckoutController extends Controller
                 'product_id' => $product
             ]);
 
-            Product::find($product)->decrement('quantity');
+            // Product::find($product)->decrement('quantity');
         }
 
         $transaction->detail()->saveMany($detail);

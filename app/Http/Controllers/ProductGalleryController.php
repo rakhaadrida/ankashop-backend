@@ -39,7 +39,7 @@ class ProductGalleryController extends Controller
     public function store(ProductGalleryRequest $request)
     {
         $data = $request->all();
-        $data['photo'] = $request->file('photo')->store('assets/product', 'public');
+        $data['photo'] = $request->file('photo')->store('/assets/product', 'public');
         ProductGallery::create($data);
 
         return redirect()->route('product-gallery.index');
